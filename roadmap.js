@@ -6,6 +6,21 @@
   const KEY = 'pdi.marcus.roadmap.v1';
   const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const goalLabels = { padrao: 'Julgamento', plataforma: 'Ownership', pessoas: 'Influência' };
+  const autonomyLabels = {
+    individual: { label: 'Sob seu controle', hint: 'Pode começar individualmente dentro do trabalho já atribuído.' },
+    alignment: { label: 'Requer alinhamento', hint: 'Depende de acesso, agenda, validação ou acordo com o time.' },
+    opportunity: { label: 'Quando houver oportunidade', hint: 'Não bloqueia o ciclo se o contexto não oferecer uma oportunidade real.' }
+  };
+  const alignmentSteps = new Set([
+    'f1-02','f1-03','f1-06','f1-07','f1-10','f1-12',
+    'f2-06','f2-08','f2-09','f2-10','f2-11','f2-12',
+    'f3-04','f3-05','f3-06','f3-07','f3-08','f3-11','f3-12',
+    'f4-09','f4-10','f4-11'
+  ]);
+  const opportunitySteps = new Set([
+    'f1-05','f2-12','f3-09','f3-10','f3-11','f3-12','f4-10'
+  ]);
+  const autonomyOf = (step) => opportunitySteps.has(step.id) ? 'opportunity' : alignmentSteps.has(step.id) ? 'alignment' : 'individual';
   const load = () => {
     try { return { checks: {}, open: {}, filter: 'all', ...JSON.parse(localStorage.getItem(KEY) || '{}') }; }
     catch { return { checks: {}, open: {}, filter: 'all' }; }
@@ -37,11 +52,14 @@
           <article class="roadmap-overview reveal is-in">
             <div class="roadmap-overview-copy">
               <span class="eyebrow">Visão do ciclo</span>
-              <h3>48 subtarefas organizadas em quatro fases</h3>
-              <p>Expanda cada fase, filtre por objetivo e marque o progresso. Os dados permanecem somente neste navegador.</p>
+              <h3>48 passos orientadores organizados em quatro fases</h3>
+              <p>O roadmap não é uma lista de obrigações cumulativas. Cada passo indica se está sob seu controle, se requer alinhamento ou se depende de uma oportunidade real. Itens condicionais não bloqueiam a evolução quando o contexto não os habilita.</p>
             </div>
-            <div class="roadmap-overview-score" id="roadmap-score"><div class="roadmap-score-inner"><strong>0%</strong><br><span>concluído</span></div></div>
+            <div class="roadmap-overview-score" id="roadmap-score"><div class="roadmap-score-inner"><strong>0%</strong><br><span>registrado</span></div></div>
           </article>
+          <div class="roadmap-autonomy-legend reveal is-in">
+            ${Object.entries(autonomyLabels).map(([id, item]) => `<div class="roadmap-autonomy-item is-${id}"><span>${esc(item.label)}</span><p>${esc(item.hint)}</p></div>`).join('')}
+          </div>
           <div class="roadmap-toolbar reveal is-in">
             <div class="roadmap-filters" id="roadmap-filters"></div>
             <div class="roadmap-toolbar-actions">
@@ -50,7 +68,7 @@
             </div>
           </div>
           <div class="roadmap-timeline" id="roadmap-timeline"></div>
-          <p class="roadmap-empty" id="roadmap-empty">Nenhuma subtarefa corresponde ao filtro selecionado.</p>
+          <p class="roadmap-empty" id="roadmap-empty">Nenhum passo corresponde ao filtro selecionado.</p>
         </div>
       </div>
     </section>`;
@@ -59,10 +77,12 @@
   function stepTemplate(step, index) {
     const checked = !!state.checks[step.id];
     const hidden = state.filter !== 'all' && state.filter !== step.goal;
+    const autonomy = autonomyOf(step);
+    const autonomyInfo = autonomyLabels[autonomy];
     return `<article class="roadmap-step${checked ? ' is-done' : ''}${hidden ? ' is-hidden' : ''}" data-roadmap-goal="${esc(step.goal)}">
-      <input class="roadmap-step-check" type="checkbox" data-roadmap-step="${esc(step.id)}" ${checked ? 'checked' : ''} aria-label="Concluir ${esc(step.title)}">
-      <div><span class="roadmap-step-code">${String(index + 1).padStart(2,'0')}</span><h4>${esc(step.title)}</h4><p>${esc(step.detail)}</p><span class="roadmap-step-evidence"><b>Evidência:</b> ${esc(step.evidence)}</span></div>
-      <span class="roadmap-goal-chip">${esc(goalLabels[step.goal])}</span>
+      <input class="roadmap-step-check" type="checkbox" data-roadmap-step="${esc(step.id)}" ${checked ? 'checked' : ''} aria-label="Registrar ${esc(step.title)}">
+      <div><span class="roadmap-step-code">${String(index + 1).padStart(2,'0')}</span><h4>${esc(step.title)}</h4><p>${esc(step.detail)}</p><span class="roadmap-step-evidence"><b>Evidência possível:</b> ${esc(step.evidence)}</span></div>
+      <div class="roadmap-step-chips"><span class="roadmap-goal-chip">${esc(goalLabels[step.goal])}</span><span class="roadmap-autonomy-chip is-${autonomy}" title="${esc(autonomyInfo.hint)}">${esc(autonomyInfo.label)}</span></div>
     </article>`;
   }
 
@@ -78,14 +98,14 @@
         <header class="roadmap-phase-head" data-roadmap-toggle="${esc(phase.id)}" tabindex="0" role="button" aria-expanded="${open}">
           <div class="roadmap-phase-index">${esc(phase.index)}</div>
           <div class="roadmap-phase-title"><small>${esc(phase.label)}${phase.id === current ? ' · fase atual' : ''}</small><h3>${esc(phase.title)}</h3><p>${esc(phase.emphasis)}</p></div>
-          <div class="roadmap-phase-progress"><div class="roadmap-phase-progress-top"><span>${phase.steps.filter((s) => state.checks[s.id]).length}/${phase.steps.length} tarefas</span><strong>${pct}%</strong></div><div class="roadmap-mini-track"><i style="width:${pct}%"></i></div></div>
+          <div class="roadmap-phase-progress"><div class="roadmap-phase-progress-top"><span>${phase.steps.filter((s) => state.checks[s.id]).length}/${phase.steps.length} passos registrados</span><strong>${pct}%</strong></div><div class="roadmap-mini-track"><i style="width:${pct}%"></i></div></div>
           <button class="roadmap-chevron" type="button" aria-label="Alternar fase"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
         </header>
         <div class="roadmap-phase-body">
           <div class="roadmap-steps">${phase.steps.map(stepTemplate).join('')}</div>
           <div class="roadmap-phase-footer">
-            <div class="roadmap-info"><h4>Entregáveis esperados</h4><ul>${phase.outputs.map((o) => `<li>${esc(o)}</li>`).join('')}</ul></div>
-            <div class="roadmap-info roadmap-gate"><h4>Gate de saída</h4><p>${esc(phase.gate)}</p></div>
+            <div class="roadmap-info"><h4>Resultados esperados</h4><ul>${phase.outputs.map((o) => `<li>${esc(o)}</li>`).join('')}</ul></div>
+            <div class="roadmap-info roadmap-gate"><h4>Critério de avanço</h4><p>${esc(phase.gate)}</p><small>Use este critério como orientação. Recalibre quando dependências externas impedirem uma evidência específica.</small></div>
           </div>
         </div>
       </article>`;
