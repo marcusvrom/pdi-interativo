@@ -9,6 +9,21 @@
   const STORAGE_KEY = 'pdi.marcus.v2';
   const LEGACY_KEY = 'marcus-pdi-2026';
 
+  if (!D) {
+    console.error('pdi-data.js não carregou — verifique se a versão do arquivo bate com index.html.');
+    return;
+  }
+
+  /** Um bloco que falha não pode derrubar o resto da página. */
+  function safe(label, fn) {
+    try {
+      return fn();
+    } catch (error) {
+      console.error(`[PDI] falha ao renderizar "${label}":`, error);
+      return undefined;
+    }
+  }
+
   /* ---------------------------------------------------------
      Utilidades
      --------------------------------------------------------- */
@@ -1577,32 +1592,32 @@
   }
 
   function renderAll() {
-    renderCycle();
-    renderGoals();
-    renderPhases();
-    renderMatrix();
-    renderEvidenceFilters();
-    renderEvidences();
-    renderIndicators();
-    renderCheckpoints();
-    renderQuestions();
-    renderScores();
-    renderStorageNote();
+    safe('ciclo', renderCycle);
+    safe('metas', renderGoals);
+    safe('fases', renderPhases);
+    safe('matriz', renderMatrix);
+    safe('filtros de evidência', renderEvidenceFilters);
+    safe('evidências', renderEvidences);
+    safe('indicadores', renderIndicators);
+    safe('checkpoints', renderCheckpoints);
+    safe('perguntas', renderQuestions);
+    safe('prontidão', renderScores);
+    safe('nota de armazenamento', renderStorageNote);
   }
 
   function init() {
-    injectDefs();
-    initTheme();
-    renderNav();
-    renderHeader();
-    renderPositioning();
-    renderStatic();
-    renderEvidenceForm();
+    safe('defs', injectDefs);
+    safe('tema', initTheme);
+    safe('navegação', renderNav);
+    safe('cabeçalho', renderHeader);
+    safe('posicionamento', renderPositioning);
+    safe('blocos estáticos', renderStatic);
+    safe('formulários', renderEvidenceForm);
     renderAll();
-    bindEvents();
-    observeReveals();
-    setActiveSection();
-    $('#topbar').classList.toggle('is-stuck', window.scrollY > 12);
+    safe('eventos', bindEvents);
+    safe('animações', observeReveals);
+    safe('scrollspy', setActiveSection);
+    $('#topbar')?.classList.toggle('is-stuck', window.scrollY > 12);
   }
 
   if (document.readyState === 'loading') {
