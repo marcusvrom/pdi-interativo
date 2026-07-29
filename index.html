@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="description" content="PDI interativo de Marcus Romano — metas do ciclo de 90 dias, matriz de competências, evidências, checkpoints e banca.">
+  <meta name="description" content="PDI interativo de Marcus Romano — metas do ciclo de 90 dias, roadmap, matriz de competências, evidências, checkpoints e banca.">
   <meta name="theme-color" content="#060b14" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)">
   <meta name="color-scheme" content="dark light">
@@ -12,9 +12,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-  <!-- ?v= força o navegador a buscar o arquivo novo após cada deploy.
-       Ao alterar styles.css, pdi-data.js ou app.js, incremente a versão nos três. -->
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="roadmap.css?v=1">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
@@ -25,435 +24,101 @@
     <div class="container topbar-inner">
       <a class="brand" href="#inicio" aria-label="Início do PDI">
         <span class="brand-mark">MR</span>
-        <span class="brand-copy">
-          <strong>PDI 2026</strong>
-          <small id="brand-cycle">Ciclo de 90 dias</small>
-        </span>
+        <span class="brand-copy"><strong>PDI 2026</strong><small id="brand-cycle">Ciclo de 90 dias</small></span>
       </a>
-
       <nav class="nav-links" id="nav-links" aria-label="Navegação principal"></nav>
-
       <div class="topbar-actions">
         <button class="pill-button" id="palette-button" type="button" aria-haspopup="dialog">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-          <span>Buscar ou executar</span>
-          <kbd>⌘K</kbd>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Buscar ou executar</span><kbd>⌘K</kbd>
         </button>
         <button class="icon-button" id="theme-button" type="button" aria-label="Alternar tema" title="Alternar tema (T)">
           <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
           <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
         </button>
-        <button class="icon-button only-mobile" id="menu-button" type="button" aria-label="Abrir menu" aria-expanded="false">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-        </button>
+        <button class="icon-button only-mobile" id="menu-button" type="button" aria-label="Abrir menu" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       </div>
     </div>
     <div class="mobile-menu" id="mobile-menu" hidden></div>
   </header>
 
   <main id="conteudo">
-    <!-- ================= HERO / COCKPIT ================= -->
     <section class="hero" id="inicio">
       <div class="container hero-grid">
         <div class="hero-copy reveal">
-          <span class="eyebrow">Plano de Desenvolvimento Individual</span>
-          <h1>Marcus<br>Romano</h1>
-          <p class="hero-role" id="hero-role"></p>
-          <p class="hero-summary" id="hero-objective"></p>
-          <ul class="pillars" id="hero-pillars"></ul>
+          <span class="eyebrow">Plano de Desenvolvimento Individual</span><h1>Marcus<br>Romano</h1>
+          <p class="hero-role" id="hero-role"></p><p class="hero-summary" id="hero-objective"></p><ul class="pillars" id="hero-pillars"></ul>
           <div class="hero-actions">
-            <a class="button button-primary" href="#metas">
-              Ver metas do ciclo
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
+            <a class="button button-primary" href="#metas">Ver metas do ciclo<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="button button-secondary" href="#roadmap">Abrir roadmap</a>
             <button class="button button-secondary" type="button" data-action="new-evidence">Registrar evidência</button>
             <button class="button button-ghost" type="button" data-action="palette">Ações rápidas <kbd>⌘K</kbd></button>
           </div>
         </div>
-
         <aside class="profile-card reveal" aria-label="Resumo do ciclo">
-          <div class="profile-head">
-            <img class="profile-photo" id="profile-photo" alt="Foto de perfil de Marcus Romano" loading="eager" referrerpolicy="no-referrer">
-            <div>
-              <strong id="profile-name">Marcus Romano</strong>
-              <span id="profile-headline"></span>
-            </div>
-          </div>
-
-          <div class="cycle-strip">
-            <div class="cycle-day">
-              <span class="cycle-day-label">Dia</span>
-              <strong id="cycle-day">—</strong>
-              <span class="cycle-day-total" id="cycle-total">/ 90</span>
-            </div>
-            <div class="cycle-meta">
-              <span class="chip chip-live" id="cycle-phase">—</span>
-              <span id="cycle-dates"></span>
-              <span id="cycle-remaining"></span>
-            </div>
-          </div>
-          <div class="cycle-track" role="img" aria-label="Progresso temporal do ciclo">
-            <i id="cycle-elapsed"></i>
-            <span class="cycle-marks" id="cycle-marks"></span>
-          </div>
-
-          <dl class="profile-facts">
-            <div><dt>Cargo atual</dt><dd id="fact-role"></dd></div>
-            <div><dt>Empresa</dt><dd id="fact-company"></dd></div>
-            <div><dt>Trilha primária</dt><dd id="fact-track"></dd></div>
-            <div><dt>Diferenciação</dt><dd id="fact-edge"></dd></div>
-          </dl>
-
-          <div class="score-block">
-            <div class="score-head">
-              <span>Prontidão do ciclo</span>
-              <strong id="overall-score">0%</strong>
-            </div>
-            <div class="score-track"><i id="overall-bar"></i></div>
-            <ul class="score-breakdown" id="score-breakdown"></ul>
-            <p class="score-note">Execução 55% · Indicadores 30% · Matriz 15%. Nenhum número aqui substitui feedback formal.</p>
-          </div>
+          <div class="profile-head"><img class="profile-photo" id="profile-photo" alt="Foto de perfil de Marcus Romano" loading="eager" referrerpolicy="no-referrer"><div><strong id="profile-name">Marcus Romano</strong><span id="profile-headline"></span></div></div>
+          <div class="cycle-strip"><div class="cycle-day"><span class="cycle-day-label">Dia</span><strong id="cycle-day">—</strong><span class="cycle-day-total" id="cycle-total">/ 90</span></div><div class="cycle-meta"><span class="chip chip-live" id="cycle-phase">—</span><span id="cycle-dates"></span><span id="cycle-remaining"></span></div></div>
+          <div class="cycle-track" role="img" aria-label="Progresso temporal do ciclo"><i id="cycle-elapsed"></i><span class="cycle-marks" id="cycle-marks"></span></div>
+          <dl class="profile-facts"><div><dt>Cargo atual</dt><dd id="fact-role"></dd></div><div><dt>Empresa</dt><dd id="fact-company"></dd></div><div><dt>Trilha primária</dt><dd id="fact-track"></dd></div><div><dt>Diferenciação</dt><dd id="fact-edge"></dd></div></dl>
+          <div class="score-block"><div class="score-head"><span>Prontidão do ciclo</span><strong id="overall-score">0%</strong></div><div class="score-track"><i id="overall-bar"></i></div><ul class="score-breakdown" id="score-breakdown"></ul><p class="score-note">Execução 55% · Indicadores 30% · Matriz 15%. Nenhum número aqui substitui feedback formal.</p></div>
         </aside>
       </div>
     </section>
 
-    <!-- ================= POSICIONAMENTO ================= -->
-    <section class="section" id="visao">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow">Posicionamento</span>
-          <h2>Onde estou e para onde vou</h2>
-          <p>Leitura objetiva do cenário atual, do próximo nível e do horizonte — sem transformar interesse em meta.</p>
-        </div>
-        <div class="path-grid reveal" id="path-grid"></div>
+    <section class="section" id="visao"><div class="container">
+      <div class="section-heading reveal"><span class="eyebrow">Posicionamento</span><h2>Onde estou e para onde vou</h2><p>Leitura objetiva do cenário atual, do próximo nível e do horizonte — sem transformar interesse em meta.</p></div>
+      <div class="path-grid reveal" id="path-grid"></div>
+      <div class="split-grid"><article class="panel reveal"><h3>Base técnica atual</h3><p class="panel-sub">Repertório comprovado pelo perfil profissional.</p><div class="chip-cloud" id="stack-cloud"></div></article><article class="panel reveal"><h3>Eixo de diferenciação</h3><p class="panel-sub">AI Engineering aplicada de forma governada e mensurável.</p><ol class="numbered-list" id="edge-list"></ol></article></div>
+      <article class="panel panel-constraint reveal" id="constraint-panel"><div class="panel-warn-head"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 1 0 8.5 8.5"/><path d="M12 7.5V12l3 2"/><path d="M16.5 3.5h4.5v4.5"/></svg><div><h3 id="constraint-title"></h3><p class="panel-sub" id="constraint-text"></p></div></div></article>
+      <article class="panel panel-warn reveal" id="exclusions-panel"><div class="panel-warn-head"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 9v5M12 17.5v.01"/><path d="M10.3 3.9 2.5 17.4A2 2 0 0 0 4.2 20.4h15.6a2 2 0 0 0 1.7-3l-7.8-13.5a2 2 0 0 0-3.4 0Z"/></svg><div><h3>Fora de escopo neste ciclo</h3><p class="panel-sub">Excesso de escopo é o modo mais comum de um PDI falhar. Estes itens estão explicitamente descartados até a banca.</p></div></div><ul class="exclusion-list" id="exclusion-list"></ul></article>
+    </div></section>
 
-        <div class="split-grid">
-          <article class="panel reveal">
-            <h3>Base técnica atual</h3>
-            <p class="panel-sub">Repertório comprovado pelo perfil profissional.</p>
-            <div class="chip-cloud" id="stack-cloud"></div>
-          </article>
-          <article class="panel reveal">
-            <h3>Eixo de diferenciação</h3>
-            <p class="panel-sub">AI Engineering aplicada de forma governada e mensurável.</p>
-            <ol class="numbered-list" id="edge-list"></ol>
-          </article>
-        </div>
+    <section class="section section-alt" id="metas"><div class="container"><div class="section-heading reveal"><span class="eyebrow">Ciclo de 90 dias</span><h2>Três objetivos, ações e evidências</h2><p>Cada objetivo traz as ações do plano, as evidências de conclusão e o critério de sucesso. O progresso é calculado a partir do que você marca — não de percepção.</p></div><div class="goals-grid" id="goals-grid"></div></div></section>
 
-        <article class="panel panel-constraint reveal" id="constraint-panel">
-          <div class="panel-warn-head">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 1 0 8.5 8.5"/><path d="M12 7.5V12l3 2"/><path d="M16.5 3.5h4.5v4.5"/></svg>
-            <div>
-              <h3 id="constraint-title"></h3>
-              <p class="panel-sub" id="constraint-text"></p>
-            </div>
-          </div>
-        </article>
+    <!-- O roadmap é inserido aqui dinamicamente por roadmap.js -->
 
-        <article class="panel panel-warn reveal" id="exclusions-panel">
-          <div class="panel-warn-head">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 9v5M12 17.5v.01"/><path d="M10.3 3.9 2.5 17.4A2 2 0 0 0 4.2 20.4h15.6a2 2 0 0 0 1.7-3l-7.8-13.5a2 2 0 0 0-3.4 0Z"/></svg>
-            <div>
-              <h3>Fora de escopo neste ciclo</h3>
-              <p class="panel-sub">Excesso de escopo é o modo mais comum de um PDI falhar. Estes itens estão explicitamente descartados até a banca.</p>
-            </div>
-          </div>
-          <ul class="exclusion-list" id="exclusion-list"></ul>
-        </article>
-      </div>
-    </section>
+    <section class="section" id="trilhas"><div class="container"><div class="section-heading reveal"><span class="eyebrow">Desenvolvimento individual</span><h2>Trilhas de capacidade</h2><p>As áreas que sustentam a evolução para Sênior. Cada uma começa com uma ação individual e evolui mediante alinhamento com o time.</p></div><div class="track-grid" id="track-grid"></div></div></section>
 
-    <!-- ================= METAS ================= -->
-    <section class="section section-alt" id="metas">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow">Ciclo de 90 dias</span>
-          <h2>Três objetivos, ações e evidências</h2>
-          <p>Cada objetivo traz as ações do plano, as evidências de conclusão e o critério de sucesso. O progresso é calculado a partir do que você marca — não de percepção.</p>
-        </div>
-        <div class="goals-grid" id="goals-grid"></div>
-      </div>
-    </section>
+    <section class="section" id="fases"><div class="container"><div class="section-heading reveal"><span class="eyebrow">Execução</span><h2>Plano por fase</h2><p>As datas são calculadas a partir do início do ciclo. A fase atual fica destacada automaticamente.</p></div><div class="phase-grid" id="phase-grid"></div></div></section>
 
-    <!-- ================= TRILHAS DE CAPACIDADE ================= -->
-    <section class="section" id="trilhas">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow">Desenvolvimento individual</span>
-          <h2>Trilhas de capacidade</h2>
-          <p>As áreas que sustentam a evolução para Sênior. Cada uma traz um primeiro passo que <strong>não depende de autorização</strong> — e a qual objetivo do ciclo ela alimenta.</p>
-        </div>
-        <div class="track-grid" id="track-grid"></div>
-      </div>
-    </section>
+    <section class="section section-alt" id="competencias"><div class="container"><div class="section-heading reveal"><span class="eyebrow">Matriz de competências</span><h2>Diagnóstico por evidência</h2><p id="matrix-rule"></p></div><div class="matrix-grid"><article class="panel radar-panel reveal"><div class="radar-legend"><span><i class="dot dot-current"></i>Nível atual</span><span><i class="dot dot-target"></i>Alvo Sênior</span></div><div class="radar-wrap" id="radar-wrap"></div><div class="radar-summary" id="radar-summary"></div></article><div class="matrix-list" id="matrix-list"></div></div><p class="fineprint reveal" id="matrix-transition"></p></div></section>
 
-    <!-- ================= FASES ================= -->
-    <section class="section" id="fases">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow">Execução</span>
-          <h2>Plano por fase</h2>
-          <p>As datas são calculadas a partir do início do ciclo. A fase atual fica destacada automaticamente.</p>
-        </div>
-        <div class="phase-grid" id="phase-grid"></div>
-      </div>
-    </section>
+    <section class="section" id="evidencias"><div class="container"><div class="section-heading reveal"><span class="eyebrow">Portfólio de impacto</span><h2>Registro de evidências</h2><p>Formato contexto → ação → resultado, com escopo, confiança e vínculo a um objetivo e às competências afetadas.</p></div><div class="evidence-layout">
+      <form class="panel evidence-form" id="evidence-form" novalidate><div class="form-head"><h3 id="evidence-form-title">Nova evidência</h3><button class="text-button" type="button" id="evidence-cancel" hidden>Cancelar edição</button></div>
+        <label class="field"><span>Título</span><input name="title" required placeholder="Ex.: Redução de falhas no fluxo de formalização"></label>
+        <label class="field"><span>Contexto</span><textarea name="context" required placeholder="Problema, restrições, usuários afetados e relevância"></textarea></label>
+        <label class="field"><span>Ação</span><textarea name="action" required placeholder="Decisões, trade-offs, liderança e execução — o que foi seu"></textarea></label>
+        <label class="field"><span>Resultado</span><textarea name="result" required placeholder="Métrica, impacto, alcance ou aprendizado verificável"></textarea></label>
+        <div class="field-row"><label class="field"><span>Objetivo</span><select name="goal" id="evidence-goal"></select></label><label class="field"><span>Escopo</span><select name="scope" id="evidence-scope"></select></label></div>
+        <div class="field-row"><label class="field"><span>Confiança</span><select name="confidence" id="evidence-confidence"></select></label><label class="field"><span>Data</span><input type="date" name="date"></label></div>
+        <fieldset class="field"><legend>Competências demonstradas</legend><div class="tag-picker" id="evidence-dimensions"></div></fieldset><div class="form-actions"><button class="button button-primary" type="submit" id="evidence-submit">Adicionar evidência</button></div>
+      </form>
+      <section class="evidence-panel"><div class="panel evidence-toolbar reveal"><label class="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" id="evidence-search" placeholder="Buscar por título, contexto, ação ou resultado" aria-label="Buscar evidências"></label><div class="filter-row" id="evidence-filters"></div><div class="evidence-stats"><span><strong id="evidence-count">0</strong> registradas</span><span><strong id="evidence-strong">0</strong> fortes</span><span><strong id="evidence-target">0/5</strong> casos estruturados</span></div></div><div class="evidence-list" id="evidence-list" aria-live="polite"></div></section>
+    </div></div></section>
 
-    <!-- ================= MATRIZ ================= -->
-    <section class="section section-alt" id="competencias">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow">Matriz de competências</span>
-          <h2>Diagnóstico por evidência</h2>
-          <p id="matrix-rule"></p>
-        </div>
+    <section class="section section-alt" id="indicadores"><div class="container"><div class="section-heading reveal"><span class="eyebrow">Termômetro do ciclo</span><h2>Indicadores obrigatórios</h2><p>Sete indicadores derivados automaticamente do que você registra — não há como marcá-los sem lastro.</p></div><div class="indicator-grid" id="indicator-grid"></div></div></section>
 
-        <div class="matrix-grid">
-          <article class="panel radar-panel reveal">
-            <div class="radar-legend">
-              <span><i class="dot dot-current"></i>Nível atual</span>
-              <span><i class="dot dot-target"></i>Alvo Sênior</span>
-            </div>
-            <div class="radar-wrap" id="radar-wrap"></div>
-            <div class="radar-summary" id="radar-summary"></div>
-          </article>
+    <section class="section" id="checkpoints"><div class="container"><div class="section-heading reveal"><span class="eyebrow">Recalibração</span><h2>Checkpoints e revisão de evolução</h2><p>Comparar fatos com o baseline, atualizar evidências e decidir manter, reduzir, substituir ou concluir cada objetivo.</p></div><div class="checkpoint-layout">
+      <form class="panel checkpoint-form" id="checkpoint-form" novalidate><h3>Novo checkpoint</h3><div class="field-row"><label class="field"><span>Data</span><input type="date" name="date" required></label><label class="field"><span>Tipo</span><select name="type" id="checkpoint-type"></select></label></div><label class="field"><span>O que mudou</span><textarea name="changed" required placeholder="Fatos novos do período comparados ao baseline"></textarea></label><label class="field"><span>Hipótese refutada ou evidência reforçada</span><textarea name="learned" placeholder="O que o período provou ou derrubou"></textarea></label><label class="field"><span>Decisões</span><textarea name="decisions" placeholder="Manter, reduzir, substituir ou concluir objetivos"></textarea></label><label class="field"><span>Bloqueios e apoio necessário</span><textarea name="blockers" placeholder="Controláveis, externos e o que a liderança precisa habilitar"></textarea></label><label class="field"><span>Próximo passo até o próximo checkpoint</span><input name="next" placeholder="Uma ação concreta"></label><button class="button button-primary" type="submit">Registrar checkpoint</button><ul class="prompt-list" id="checkpoint-prompts"></ul></form>
+      <div class="checkpoint-side"><div class="checkpoint-list" id="checkpoint-list" aria-live="polite"></div><article class="panel banca-panel reveal"><span class="eyebrow">Playbook</span><h3>Banca trimestral — 60 minutos</h3><p class="panel-sub" id="banca-prep"></p><ol class="agenda-list" id="banca-agenda"></ol><h4>Decisões obrigatórias</h4><ul class="decision-list" id="banca-decisions"></ul><button class="button button-secondary" type="button" data-action="copy-banca">Copiar pauta da banca</button></article></div>
+    </div></div></section>
 
-          <div class="matrix-list" id="matrix-list"></div>
-        </div>
+    <section class="section section-alt" id="lideranca"><div class="container"><div class="section-heading reveal"><span class="eyebrow">Alinhamento</span><h2>Perguntas obrigatórias para a liderança</h2><p>Registre as respostas conforme forem obtidas. Sem elas, o critério de Sênior continua sendo suposição.</p></div><div class="question-grid" id="question-grid"></div><div class="question-actions reveal"><button class="button button-secondary" type="button" data-action="copy-questions">Copiar perguntas</button><span class="fineprint" id="question-progress"></span></div></div></section>
 
-        <p class="fineprint reveal" id="matrix-transition"></p>
-      </div>
-    </section>
+    <section class="section" id="horizontes"><div class="container"><div class="section-heading reveal"><span class="eyebrow">Depois do ciclo</span><h2>Horizontes de 6 e 12 meses</h2><p>Referência de médio prazo. Não é backlog do trimestre — serve para checar se o ciclo atual está construindo a direção certa.</p></div><div class="horizon-grid" id="horizon-grid"></div></div></section>
 
-    <!-- ================= EVIDÊNCIAS ================= -->
-    <section class="section" id="evidencias">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow">Portfólio de impacto</span>
-          <h2>Registro de evidências</h2>
-          <p>Formato contexto → ação → resultado, com escopo, confiança e vínculo a um objetivo e às competências afetadas.</p>
-        </div>
+    <section class="section section-alt" id="portfolio"><div class="container"><div class="section-heading reveal"><span class="eyebrow">Evidência pública</span><h2>PDI conectado ao trabalho real</h2><p>O PDI orienta o desenvolvimento; repositórios, portfólio e a base de conhecimento demonstram aplicação prática.</p></div><div class="link-grid" id="link-grid"></div></div></section>
 
-        <div class="evidence-layout">
-          <form class="panel evidence-form" id="evidence-form" novalidate>
-            <div class="form-head">
-              <h3 id="evidence-form-title">Nova evidência</h3>
-              <button class="text-button" type="button" id="evidence-cancel" hidden>Cancelar edição</button>
-            </div>
-            <label class="field">
-              <span>Título</span>
-              <input name="title" required placeholder="Ex.: Redução de falhas no fluxo de formalização">
-            </label>
-            <label class="field">
-              <span>Contexto</span>
-              <textarea name="context" required placeholder="Problema, restrições, usuários afetados e relevância"></textarea>
-            </label>
-            <label class="field">
-              <span>Ação</span>
-              <textarea name="action" required placeholder="Decisões, trade-offs, liderança e execução — o que foi seu"></textarea>
-            </label>
-            <label class="field">
-              <span>Resultado</span>
-              <textarea name="result" required placeholder="Métrica, impacto, alcance ou aprendizado verificável"></textarea>
-            </label>
-            <div class="field-row">
-              <label class="field">
-                <span>Objetivo</span>
-                <select name="goal" id="evidence-goal"></select>
-              </label>
-              <label class="field">
-                <span>Escopo</span>
-                <select name="scope" id="evidence-scope"></select>
-              </label>
-            </div>
-            <div class="field-row">
-              <label class="field">
-                <span>Confiança</span>
-                <select name="confidence" id="evidence-confidence"></select>
-              </label>
-              <label class="field">
-                <span>Data</span>
-                <input type="date" name="date">
-              </label>
-            </div>
-            <fieldset class="field">
-              <legend>Competências demonstradas</legend>
-              <div class="tag-picker" id="evidence-dimensions"></div>
-            </fieldset>
-            <div class="form-actions">
-              <button class="button button-primary" type="submit" id="evidence-submit">Adicionar evidência</button>
-            </div>
-          </form>
-
-          <section class="evidence-panel">
-            <div class="panel evidence-toolbar reveal">
-              <label class="search-field">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-                <input type="search" id="evidence-search" placeholder="Buscar por título, contexto, ação ou resultado" aria-label="Buscar evidências">
-              </label>
-              <div class="filter-row" id="evidence-filters"></div>
-              <div class="evidence-stats">
-                <span><strong id="evidence-count">0</strong> registradas</span>
-                <span><strong id="evidence-strong">0</strong> fortes</span>
-                <span><strong id="evidence-target">0/5</strong> casos estruturados</span>
-              </div>
-            </div>
-            <div class="evidence-list" id="evidence-list" aria-live="polite"></div>
-          </section>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= INDICADORES ================= -->
-    <section class="section section-alt" id="indicadores">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow">Termômetro do ciclo</span>
-          <h2>Indicadores obrigatórios</h2>
-          <p>Seis indicadores definidos no PDI. Todos são derivados automaticamente do que você registra — não há como marcá-los sem lastro.</p>
-        </div>
-        <div class="indicator-grid" id="indicator-grid"></div>
-      </div>
-    </section>
-
-    <!-- ================= CHECKPOINTS ================= -->
-    <section class="section" id="checkpoints">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow">Recalibração</span>
-          <h2>Checkpoints e revisão de evolução</h2>
-          <p>Comparar fatos com o baseline, atualizar evidências, verificar resultados (não atividades) e decidir manter, reduzir, substituir ou concluir cada objetivo.</p>
-        </div>
-
-        <div class="checkpoint-layout">
-          <form class="panel checkpoint-form" id="checkpoint-form" novalidate>
-            <h3>Novo checkpoint</h3>
-            <div class="field-row">
-              <label class="field"><span>Data</span><input type="date" name="date" required></label>
-              <label class="field"><span>Tipo</span><select name="type" id="checkpoint-type"></select></label>
-            </div>
-            <label class="field"><span>O que mudou</span><textarea name="changed" required placeholder="Fatos novos do período comparados ao baseline"></textarea></label>
-            <label class="field"><span>Hipótese refutada ou evidência reforçada</span><textarea name="learned" placeholder="O que o período provou ou derrubou"></textarea></label>
-            <label class="field"><span>Decisões</span><textarea name="decisions" placeholder="Manter, reduzir, substituir ou concluir objetivos"></textarea></label>
-            <label class="field"><span>Bloqueios e apoio necessário</span><textarea name="blockers" placeholder="Controláveis, externos e o que a liderança precisa habilitar"></textarea></label>
-            <label class="field"><span>Próximo passo até o próximo checkpoint</span><input name="next" placeholder="Uma ação concreta"></label>
-            <button class="button button-primary" type="submit">Registrar checkpoint</button>
-            <ul class="prompt-list" id="checkpoint-prompts"></ul>
-          </form>
-
-          <div class="checkpoint-side">
-            <div class="checkpoint-list" id="checkpoint-list" aria-live="polite"></div>
-            <article class="panel banca-panel reveal">
-              <span class="eyebrow">Playbook</span>
-              <h3>Banca trimestral — 60 minutos</h3>
-              <p class="panel-sub" id="banca-prep"></p>
-              <ol class="agenda-list" id="banca-agenda"></ol>
-              <h4>Decisões obrigatórias</h4>
-              <ul class="decision-list" id="banca-decisions"></ul>
-              <button class="button button-secondary" type="button" data-action="copy-banca">Copiar pauta da banca</button>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= LIDERANÇA ================= -->
-    <section class="section section-alt" id="lideranca">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow">Alinhamento</span>
-          <h2>Perguntas obrigatórias para a liderança</h2>
-          <p>Registre as respostas conforme forem obtidas. Sem elas, o critério de Sênior continua sendo suposição.</p>
-        </div>
-        <div class="question-grid" id="question-grid"></div>
-        <div class="question-actions reveal">
-          <button class="button button-secondary" type="button" data-action="copy-questions">Copiar perguntas</button>
-          <span class="fineprint" id="question-progress"></span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= HORIZONTES ================= -->
-    <section class="section" id="horizontes">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow">Depois do ciclo</span>
-          <h2>Horizontes de 6 e 12 meses</h2>
-          <p>Referência de médio prazo. Não é backlog do trimestre — serve para checar se o ciclo atual está construindo a direção certa.</p>
-        </div>
-        <div class="horizon-grid" id="horizon-grid"></div>
-      </div>
-    </section>
-
-    <!-- ================= PORTFÓLIO / LINKS ================= -->
-    <section class="section section-alt" id="portfolio">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow">Evidência pública</span>
-          <h2>PDI conectado ao trabalho real</h2>
-          <p>O PDI orienta o desenvolvimento; repositórios, portfólio e a base de conhecimento demonstram aplicação prática.</p>
-        </div>
-        <div class="link-grid" id="link-grid"></div>
-      </div>
-    </section>
-
-    <!-- ================= DADOS ================= -->
-    <section class="section" id="dados">
-      <div class="container">
-        <article class="panel data-panel reveal">
-          <div>
-            <span class="eyebrow">Seus dados</span>
-            <h2>Tudo fica neste navegador</h2>
-            <p class="panel-sub">Nada é enviado para servidor algum. Exporte antes de trocar de máquina — em JSON para restaurar aqui, ou em Markdown para colar no Notion.</p>
-            <p class="fineprint" id="storage-note"></p>
-          </div>
-          <div class="data-actions">
-            <button class="button button-primary" type="button" data-action="export-json">Exportar JSON</button>
-            <button class="button button-secondary" type="button" data-action="export-md">Exportar Markdown</button>
-            <button class="button button-ghost" type="button" data-action="import">Importar JSON</button>
-            <button class="button button-ghost" type="button" data-action="print">Imprimir / PDF</button>
-            <button class="button button-danger" type="button" data-action="reset">Limpar dados</button>
-            <input type="file" id="import-input" accept="application/json,.json" hidden>
-          </div>
-        </article>
-      </div>
-    </section>
+    <section class="section" id="dados"><div class="container"><article class="panel data-panel reveal"><div><span class="eyebrow">Seus dados</span><h2>Tudo fica neste navegador</h2><p class="panel-sub">Nada é enviado para servidor algum. Exporte antes de trocar de máquina — em JSON para restaurar aqui, ou em Markdown para colar no Notion.</p><p class="fineprint" id="storage-note"></p></div><div class="data-actions"><button class="button button-primary" type="button" data-action="export-json">Exportar JSON</button><button class="button button-secondary" type="button" data-action="export-md">Exportar Markdown</button><button class="button button-ghost" type="button" data-action="import">Importar JSON</button><button class="button button-ghost" type="button" data-action="print">Imprimir / PDF</button><button class="button button-danger" type="button" data-action="reset">Limpar dados</button><input type="file" id="import-input" accept="application/json,.json" hidden></div></article></div></section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-content">
-      <div>
-        <strong>PDI · Marcus Romano</strong>
-        <span id="footer-governance"></span>
-      </div>
-      <div class="footer-actions">
-        <a class="button button-ghost" id="footer-notion" href="#" target="_blank" rel="noreferrer">Fonte de verdade no Notion ↗</a>
-        <a class="button button-secondary" href="#inicio">Voltar ao início</a>
-      </div>
-    </div>
-  </footer>
+  <footer class="footer"><div class="container footer-content"><div><strong>PDI · Marcus Romano</strong><span id="footer-governance"></span></div><div class="footer-actions"><a class="button button-ghost" id="footer-notion" href="#" target="_blank" rel="noreferrer">Fonte de verdade no Notion ↗</a><a class="button button-secondary" href="#inicio">Voltar ao início</a></div></div></footer>
 
-  <!-- ================= COMMAND PALETTE ================= -->
-  <div class="palette-backdrop" id="palette" hidden>
-    <div class="palette" role="dialog" aria-modal="true" aria-label="Ações rápidas">
-      <div class="palette-input">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-        <input id="palette-input" type="text" placeholder="Ir para uma seção ou executar uma ação…" autocomplete="off" aria-label="Buscar ação">
-        <kbd>Esc</kbd>
-      </div>
-      <ul class="palette-list" id="palette-list" role="listbox" aria-label="Resultados"></ul>
-      <div class="palette-foot">
-        <span><kbd>↑</kbd><kbd>↓</kbd> navegar</span>
-        <span><kbd>↵</kbd> executar</span>
-        <span><kbd>T</kbd> tema</span>
-        <span><kbd>E</kbd> nova evidência</span>
-      </div>
-    </div>
-  </div>
-
+  <div class="palette-backdrop" id="palette" hidden><div class="palette" role="dialog" aria-modal="true" aria-label="Ações rápidas"><div class="palette-input"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="palette-input" type="text" placeholder="Ir para uma seção ou executar uma ação…" autocomplete="off" aria-label="Buscar ação"><kbd>Esc</kbd></div><ul class="palette-list" id="palette-list" role="listbox" aria-label="Resultados"></ul><div class="palette-foot"><span><kbd>↑</kbd><kbd>↓</kbd> navegar</span><span><kbd>↵</kbd> executar</span><span><kbd>T</kbd> tema</span><span><kbd>E</kbd> nova evidência</span></div></div></div>
   <div class="toast-stack" id="toast-stack" aria-live="polite" aria-atomic="false"></div>
 
-  <script src="pdi-data.js?v=3"></script>
-  <script src="app.js?v=3"></script>
+  <script src="pdi-data.js?v=4"></script>
+  <script src="app.js?v=4"></script>
+  <script src="roadmap-data.js?v=1"></script>
+  <script src="roadmap.js?v=1"></script>
 </body>
 </html>
