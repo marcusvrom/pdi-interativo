@@ -6,8 +6,25 @@
   'use strict';
 
   const D = window.PDI_DATA;
-  const STORAGE_KEY = 'pdi.marcus.v2';
-  const LEGACY_KEY = 'marcus-pdi-2026';
+  const STORAGE_KEY = 'pdi.marcus.v3';
+  const LEGACY_KEYS = ['pdi.marcus.v2', 'marcus-pdi-2026'];
+  /** Objetivos foram redesenhados na recalibração de 29/07/2026. */
+  const GOAL_ID_MAP = { ownership: 'padrao', agents: 'metodo', influence: 'pessoas' };
+
+  if (!D) {
+    console.error('pdi-data.js não carregou — verifique se a versão do arquivo bate com index.html.');
+    return;
+  }
+
+  /** Um bloco que falha não pode derrubar o resto da página. */
+  function safe(label, fn) {
+    try {
+      return fn();
+    } catch (error) {
+      console.error(`[PDI] falha ao renderizar "${label}":`, error);
+      return undefined;
+    }
+  }
 
   /* ---------------------------------------------------------
      Utilidades
@@ -94,28 +111,52 @@
     savedAt: null
   });
 
+  /**
+   * Traz o que continua válido de versões anteriores.
+   * Evidências, checkpoints, matriz e respostas sobrevivem; os checklists de
+   * objetivo não, porque as ações mudaram na recalibração.
+   */
   function migrateLegacy(state) {
-    try {
-      const raw = localStorage.getItem(LEGACY_KEY);
-      if (!raw) return state;
-      const old = JSON.parse(raw);
+    for (const key of LEGACY_KEYS) {
+      let old;
+      try {
+        const raw = localStorage.getItem(key);
+        if (!raw) continue;
+        old = JSON.parse(raw);
+      } catch {
+        continue;
+      }
+
       if (Array.isArray(old.evidences)) {
         state.evidences = old.evidences.map((item) => ({
           id: item.id || uid(),
           createdAt: item.createdAt || new Date().toISOString(),
-          date: (item.createdAt || '').slice(0, 10) || toISO(startOfToday()),
+          date: item.date || (item.createdAt || '').slice(0, 10) || toISO(startOfToday()),
           title: item.title || '',
           context: item.context || '',
           action: item.action || '',
           result: item.result || '',
           scope: item.scope || D.scopes[0],
           confidence: item.confidence || D.confidences[0],
-          goal: '',
-          dimensions: []
+          goal: GOAL_ID_MAP[item.goal] || (D.goals.some((g) => g.id === item.goal) ? item.goal : ''),
+          dimensions: Array.isArray(item.dimensions) ? item.dimensions : []
         }));
       }
-      localStorage.removeItem(LEGACY_KEY);
-    } catch { /* ignora */ }
+      if (Array.isArray(old.checkpoints)) state.checkpoints = old.checkpoints;
+      if (old.matrix) state.matrix = { ...old.matrix };
+      if (old.answers) state.answers = { ...old.answers };
+      if (old.prefs) state.prefs = { ...state.prefs, ...old.prefs };
+
+      // grava o novo formato ANTES de descartar o antigo: um reload sem
+      // interação não pode perder o que foi migrado.
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        localStorage.removeItem(key);
+      } catch {
+        console.warn('[PDI] migração não pôde ser persistida; dados antigos preservados.');
+      }
+      break;
+    }
     return state;
   }
 
@@ -299,7 +340,8 @@
     { id: 'inicio', label: 'Início', nav: false },
     { id: 'visao', label: 'Visão', nav: true },
     { id: 'metas', label: 'Metas', nav: true },
-    { id: 'fases', label: 'Fases', nav: true },
+    { id: 'trilhas', label: 'Trilhas', nav: true },
+    { id: 'fases', label: 'Fases', nav: false },
     { id: 'competencias', label: 'Competências', nav: true },
     { id: 'evidencias', label: 'Evidências', nav: true },
     { id: 'indicadores', label: 'Indicadores', nav: false },
@@ -421,6 +463,31 @@
       .map((e) => `<li><b>${e.n}</b><span>${esc(e.text)}</span></li>`)
       .join('');
     $('#exclusion-list').innerHTML = D.exclusions.map((e) => `<li><span>${esc(e)}</span></li>`).join('');
+
+    $('#constraint-title').textContent = D.constraint.title;
+    $('#constraint-text').textContent = D.constraint.text;
+  }
+
+  function renderTracks() {
+    $('#track-grid').innerHTML = D.tracks
+      .map((track) => {
+        const goal = D.goals.find((g) => g.id === track.goal);
+        return `
+        <article class="track-card ${rv('tracks')}">
+          <div class="track-top">
+            <h3>${esc(track.name)}</h3>
+            ${goal ? `<span class="chip">Obj. ${esc(goal.index)}</span>` : ''}
+          </div>
+          <p class="track-why">${esc(track.why)}</p>
+          <div class="track-start">
+            <strong>Começa hoje, sem depender de ninguém</strong>
+            <p>${esc(track.start)}</p>
+          </div>
+          <p class="track-evidence"><span>Evidência que gera</span>${esc(track.evidence)}</p>
+        </article>`;
+      })
+      .join('');
+    observeReveals();
   }
 
   /* ---------------------------------------------------------
@@ -1577,32 +1644,33 @@
   }
 
   function renderAll() {
-    renderCycle();
-    renderGoals();
-    renderPhases();
-    renderMatrix();
-    renderEvidenceFilters();
-    renderEvidences();
-    renderIndicators();
-    renderCheckpoints();
-    renderQuestions();
-    renderScores();
-    renderStorageNote();
+    safe('ciclo', renderCycle);
+    safe('metas', renderGoals);
+    safe('fases', renderPhases);
+    safe('matriz', renderMatrix);
+    safe('filtros de evidência', renderEvidenceFilters);
+    safe('evidências', renderEvidences);
+    safe('indicadores', renderIndicators);
+    safe('checkpoints', renderCheckpoints);
+    safe('perguntas', renderQuestions);
+    safe('prontidão', renderScores);
+    safe('nota de armazenamento', renderStorageNote);
   }
 
   function init() {
-    injectDefs();
-    initTheme();
-    renderNav();
-    renderHeader();
-    renderPositioning();
-    renderStatic();
-    renderEvidenceForm();
+    safe('defs', injectDefs);
+    safe('tema', initTheme);
+    safe('navegação', renderNav);
+    safe('cabeçalho', renderHeader);
+    safe('posicionamento', renderPositioning);
+    safe('trilhas', renderTracks);
+    safe('blocos estáticos', renderStatic);
+    safe('formulários', renderEvidenceForm);
     renderAll();
-    bindEvents();
-    observeReveals();
-    setActiveSection();
-    $('#topbar').classList.toggle('is-stuck', window.scrollY > 12);
+    safe('eventos', bindEvents);
+    safe('animações', observeReveals);
+    safe('scrollspy', setActiveSection);
+    $('#topbar')?.classList.toggle('is-stuck', window.scrollY > 12);
   }
 
   if (document.readyState === 'loading') {
