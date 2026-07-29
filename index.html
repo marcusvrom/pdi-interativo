@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <!-- ?v= força o navegador a buscar o arquivo novo após cada deploy.
        Ao alterar styles.css, pdi-data.js ou app.js, incremente a versão nos três. -->
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
@@ -140,6 +140,16 @@
           </article>
         </div>
 
+        <article class="panel panel-constraint reveal" id="constraint-panel">
+          <div class="panel-warn-head">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 1 0 8.5 8.5"/><path d="M12 7.5V12l3 2"/><path d="M16.5 3.5h4.5v4.5"/></svg>
+            <div>
+              <h3 id="constraint-title"></h3>
+              <p class="panel-sub" id="constraint-text"></p>
+            </div>
+          </div>
+        </article>
+
         <article class="panel panel-warn reveal" id="exclusions-panel">
           <div class="panel-warn-head">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 9v5M12 17.5v.01"/><path d="M10.3 3.9 2.5 17.4A2 2 0 0 0 4.2 20.4h15.6a2 2 0 0 0 1.7-3l-7.8-13.5a2 2 0 0 0-3.4 0Z"/></svg>
@@ -162,6 +172,18 @@
           <p>Cada objetivo traz as ações do plano, as evidências de conclusão e o critério de sucesso. O progresso é calculado a partir do que você marca — não de percepção.</p>
         </div>
         <div class="goals-grid" id="goals-grid"></div>
+      </div>
+    </section>
+
+    <!-- ================= TRILHAS DE CAPACIDADE ================= -->
+    <section class="section" id="trilhas">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Desenvolvimento individual</span>
+          <h2>Trilhas de capacidade</h2>
+          <p>As áreas que sustentam a evolução para Sênior. Cada uma traz um primeiro passo que <strong>não depende de autorização</strong> — e a qual objetivo do ciclo ela alimenta.</p>
+        </div>
+        <div class="track-grid" id="track-grid"></div>
       </div>
     </section>
 
@@ -431,7 +453,7 @@
 
   <div class="toast-stack" id="toast-stack" aria-live="polite" aria-atomic="false"></div>
 
-  <script src="pdi-data.js?v=2"></script>
-  <script src="app.js?v=2"></script>
+  <script src="pdi-data.js?v=3"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>

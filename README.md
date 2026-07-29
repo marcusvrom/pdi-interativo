@@ -8,8 +8,16 @@ o ciclo de 90 dias sem que nenhum dado saia do navegador.
 
 **Conteúdo (espelha o Notion)**
 
+> **Recalibrado em 29/07/2026.** Fato novo: autonomia limitada para criar backlog.
+> Os objetivos foram redesenhados para o desenvolvimento individual de capacidades
+> dentro das demandas já atribuídas — nenhum depende de escopo novo aprovado.
+
 - objetivo de carreira, trilha primária, eixo de diferenciação e horizonte;
-- os 3 objetivos do ciclo com **ações**, **evidências de conclusão** e **critério de sucesso**;
+- a restrição de autonomia assumida explicitamente;
+- os 4 objetivos do ciclo com **ações**, **evidências de conclusão** e **critério de sucesso**;
+- **trilhas de capacidade** — soft skills, observabilidade, SRE, cloud/AWS, FinOps,
+  SDD, ambiente agêntico e rigor de engenharia — cada uma com um primeiro passo
+  que não depende de autorização;
 - prioridades explicitamente **fora de escopo** neste ciclo;
 - plano por fase (dias 1–15, 16–45, 46–75, 76–90) com datas reais e fase atual destacada;
 - matriz de competências: 9 dimensões, escala 0–5 e alvos de transição Pleno → Sênior;
