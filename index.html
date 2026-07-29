@@ -10,6 +10,34 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .profile-photo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 22px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    .profile-photo {
+      width: 92px;
+      height: 92px;
+      flex: 0 0 92px;
+      border: 2px solid rgba(255,255,255,.14);
+      border-radius: 24px;
+      background: rgba(255,255,255,.05);
+      object-fit: cover;
+      object-position: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,.22);
+    }
+    .profile-photo-copy { display: grid; gap: 2px; }
+    .profile-photo-copy strong { font-size: 1rem; }
+    .profile-photo-copy span { color: var(--muted); font-size: .82rem; }
+    @media (max-width: 680px) {
+      .profile-photo-wrap { align-items: flex-start; }
+      .profile-photo { width: 82px; height: 82px; flex-basis: 82px; border-radius: 21px; }
+    }
+  </style>
 </head>
 <body>
   <div class="page-progress" id="page-progress" aria-hidden="true"></div>
@@ -47,6 +75,20 @@
       </section>
 
       <aside class="profile-card" aria-label="Resumo profissional">
+        <div class="profile-photo-wrap">
+          <img
+            class="profile-photo"
+            src="https://drive.google.com/thumbnail?id=1aWqj5boLiQyLnT8GMYeo-1XtkXYNy4wy&sz=w1000"
+            alt="Foto de perfil de Marcus Romano"
+            loading="eager"
+            referrerpolicy="no-referrer"
+            onerror="this.onerror=null;this.src='https://avatars.githubusercontent.com/u/77813458?v=4';"
+          >
+          <div class="profile-photo-copy">
+            <strong>Marcus Romano</strong>
+            <span>Software Engineer · PDI 2026</span>
+          </div>
+        </div>
         <div class="profile-status"><span class="status-dot"></span>Ciclo ativo · 90 dias</div>
         <dl>
           <div><dt>Cargo atual</dt><dd>Analista de Engenharia TI Pleno</dd></div>
