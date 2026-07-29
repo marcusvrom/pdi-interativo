@@ -9,10 +9,10 @@
  *  - Playbook — Banca Trimestral de PDI
  *  - Skill — Revisar Evolução e Recalibrar PDI
  *
- * RECALIBRAÇÃO 2026-07-29 — fato novo: autonomia limitada para criar backlog novo.
- * Os objetivos foram reescritos para depender do desenvolvimento individual de
- * capacidades dentro das demandas já atribuídas, e não da aprovação de uma
- * iniciativa nova. Registre esta recalibração no Notion antes da próxima banca.
+ * RECALIBRAÇÃO 2026-07-28 — autonomia limitada para criar backlog novo.
+ * O ciclo foi concentrado em três objetivos executáveis dentro das demandas
+ * já atribuídas. SDD, observabilidade, SRE, AWS, FinOps e engenharia agêntica
+ * são métodos e lentes de desenvolvimento, não carreiras paralelas.
  *
  * Ao atualizar o PDI no Notion, atualize este arquivo e a data em `governance`.
  */
@@ -22,9 +22,9 @@ window.PDI_DATA = {
     role: 'Analista de Engenharia TI Pleno',
     company: 'Itaú Unibanco',
     track: 'Senior Software Engineer IC',
-    edge: 'Confiabilidade + Engenharia agêntica',
+    edge: 'Arquitetura de integração + Engenharia agêntica',
     horizon: 'Staff / Platform / Architecture',
-    headline: 'Software Engineer · Fullstack · Cloud · SRE · AI Engineering',
+    headline: 'Software Engineer · Fullstack · Cloud · Architecture · AI Engineering',
     photo: 'https://drive.google.com/thumbnail?id=1aWqj5boLiQyLnT8GMYeo-1XtkXYNy4wy&sz=w1000',
     photoFallback: 'https://avatars.githubusercontent.com/u/77813458?v=4'
   },
@@ -37,49 +37,48 @@ window.PDI_DATA = {
 
   governance: {
     baseline: 'Perfil do LinkedIn fornecido em 28/07/2026',
-    updatedAt: '2026-07-29',
+    updatedAt: '2026-07-28',
     note:
-      'Recalibrado em 29/07/2026 para autonomia limitada de backlog. Impacto, prontidão e alcance continuam dependendo de evidência do trabalho real e de feedback da liderança — nada aqui vira nota sem lastro.',
+      'Recalibrado para três objetivos executáveis dentro do backlog existente. Impacto, prontidão e alcance continuam dependendo de evidências do trabalho real e de feedback da liderança.',
     notionUrl: 'https://app.notion.com/p/3acff07cc1f1818e9469ef9628ae76d7'
   },
 
   objective:
-    'Desenvolver, dentro do trabalho que já é meu, as capacidades que definem um Senior Software Engineer IC: rigor de decisão, profundidade em confiabilidade e custo, método próprio de engenharia e comunicação que muda o resultado dos outros.',
+    'Evoluir para Senior Software Engineer IC em sistemas corporativos críticos, consolidando julgamento arquitetural, ownership operacional e influência técnica, com SDD e engenharia agêntica como métodos para elevar qualidade, consistência e escala.',
 
-  /** A restrição que molda todo o desenho deste ciclo. */
   constraint: {
     title: 'Restrição assumida: autonomia limitada de backlog',
     text:
-      'Não há autonomia para definir iniciativas novas além das já atribuídas. Por isso nenhum objetivo deste ciclo depende de escopo aprovado: todos se aplicam às demandas que já existem e podem começar hoje. Senioridade aqui é medida por como o trabalho é feito, não por qual trabalho foi conseguido.'
+      'Não há autonomia total para definir novas iniciativas. Neste ciclo, a evolução será demonstrada pela qualidade das decisões, pelo ownership e pelo impacto produzido dentro do escopo disponível, buscando ampliar autonomia progressivamente. Cada objetivo começa com uma ação individual e evolui mediante alinhamento com o time.'
   },
 
   pillars: [
-    'Elevar o padrão dentro do backlog que já é meu',
-    'Profundidade em confiabilidade, cloud e custo',
-    'Comunicação e mentoria como competência central, não como acessório'
+    'Transformar amplitude técnica em julgamento e rigor consistentes',
+    'Compreender sistemas críticos em operação, risco, segurança e custo',
+    'Multiplicar capacidade por comunicação, documentação e métodos reutilizáveis'
   ],
 
   positioning: [
     {
       index: '01',
-      kicker: 'Agora',
+      kicker: 'Base comprovada',
       tag: 'Pleno',
       variant: 'now',
-      text: 'Fullstack e cloud em formalização digital: .NET, Angular, microfrontends, Web Components, SignalR, AWS, Terraform, observabilidade, autenticação e prevenção de fraudes.'
+      text: 'Arquitetura e integração de sistemas corporativos críticos: .NET, Angular, microfrontends, Web Components, SignalR, AWS, Terraform, autenticação, segurança e prevenção de fraudes.'
     },
     {
       index: '02',
       kicker: 'Próximo nível',
       tag: 'Senior IC',
       variant: 'target',
-      text: 'Decisão registrada antes do código, sistema compreendido em falha e custo, método de trabalho reprodutível e comunicação que alinha outras pessoas.'
+      text: 'Decisões com trade-offs explícitos, ownership após o deploy, leitura operacional por dados e comunicação que melhora o resultado de outras pessoas.'
     },
     {
       index: '03',
-      kicker: 'Horizonte',
+      kicker: 'Diferenciação e horizonte',
       tag: 'Staff / Platform',
       variant: 'horizon',
-      text: 'Problemas transversais, golden paths, padrões reutilizáveis e arquitetura adotada por múltiplos times — condicionado à repetição de impacto.'
+      text: 'SDD e engenharia agêntica governada como mecanismos de consistência e escala; no médio prazo, padrões e plataformas adotados em múltiplos contextos.'
     }
   ],
 
@@ -90,89 +89,77 @@ window.PDI_DATA = {
   ],
 
   edgeStack: [
-    { n: '01', text: 'Spec-Driven Development: especificação e critério de aceite antes do código' },
-    { n: '02', text: 'Agentes como executores do fluxo, com skills e KBs reutilizáveis' },
-    { n: '03', text: 'Avaliação por casos de teste e baseline, não por percepção de produtividade' },
-    { n: '04', text: 'Observabilidade e custo como parte da definição de pronto' }
+    { n: '01', text: 'Arquitetura e integração como base profissional comprovada' },
+    { n: '02', text: 'Spec-Driven Development para explicitar problema, alternativas e critérios antes do código' },
+    { n: '03', text: 'Agentes, skills e KBs avaliados por casos de teste, baseline e limites conhecidos' },
+    { n: '04', text: 'Confiabilidade, segurança, risco, produto e custo como lentes de decisão' }
   ],
 
   exclusions: [
-    'Esperar a aprovação de uma iniciativa nova para começar a demonstrar senioridade',
-    'Acumular certificações sem aplicação no trabalho atual',
-    'Estudar várias tecnologias em paralelo sem vínculo com o backlog de hoje',
-    'Tratar promoção ou cargo como meta diretamente controlável',
-    'Confundir volume de entregas com evidência de senioridade',
-    'Priorizar Go/performance sem demanda real que justifique aplicação imediata'
+    'Esperar uma iniciativa ideal para começar a demonstrar evolução',
+    'Transformar SRE, FinOps, cloud e IA em trilhas profissionais paralelas neste ciclo',
+    'Acumular certificações ou estudos sem aplicação no trabalho atual',
+    'Confundir volume de entregas ou documentos com impacto e senioridade',
+    'Tratar promoção ou cargo como resultado diretamente controlável',
+    'Priorizar Go ou performance sem demanda real que justifique aplicação imediata'
   ],
 
-  /**
-   * Trilhas de capacidade: as áreas que sustentam a evolução individual.
-   * Cada uma tem um primeiro passo que não depende de autorização.
-   */
   tracks: [
     {
       id: 'soft',
-      name: 'Soft skills e comunicação',
-      why: 'É o que mais separa Pleno de Sênior e o que menos depende de permissão. Decisão que ninguém entende não conta como decisão.',
-      start: 'Transformar a próxima decisão técnica em um documento curto que outra pessoa consiga seguir sozinha.',
-      evidence: 'Documentos de decisão, feedback recebido por escrito, sessões conduzidas.',
+      name: 'Comunicação e soft skills',
+      why: 'Clareza, escuta, negociação e feedback transformam conhecimento individual em decisões coletivas melhores.',
+      start: 'Registrar a próxima decisão técnica de forma que outra pessoa consiga compreender problema, alternativas e recomendação.',
+      evidence: 'Documento de decisão, feedback objetivo e exemplo de alinhamento ou execução melhorada.',
       goal: 'pessoas'
     },
     {
-      id: 'obs',
-      name: 'Observabilidade',
-      why: 'Sênior é quem consegue explicar o comportamento do sistema com dados, não com suposição.',
-      start: 'Listar os sinais que existem hoje no serviço que você mantém e o que você não conseguiria responder durante um incidente.',
-      evidence: 'Mapa de lacunas, dashboard ou instrumentação nova, pergunta antes irrespondível agora respondida.',
-      goal: 'plataforma'
-    },
-    {
-      id: 'sre',
-      name: 'SRE e confiabilidade',
-      why: 'Ownership de verdade continua depois do deploy: SLIs, SLOs, incidentes e prevenção.',
-      start: 'Propor 3 SLIs para o seu serviço e medir o comportamento real antes de sugerir qualquer meta.',
-      evidence: 'SLIs medidos, SLO candidato, runbook validado, revisão de incidente.',
-      goal: 'plataforma'
-    },
-    {
-      id: 'cloud',
-      name: 'Cloud e infraestrutura (AWS)',
-      why: 'Decisão de arquitetura sem entender a infraestrutura que a sustenta é palpite.',
-      start: 'Desenhar a topologia real do seu serviço na AWS: o que roda onde, com quais permissões e quais pontos de falha.',
-      evidence: 'Diagrama de topologia, IaC revisado, ponto de falha identificado e endereçado.',
-      goal: 'plataforma'
-    },
-    {
-      id: 'finops',
-      name: 'FinOps',
-      why: 'Custo é um requisito não-funcional. Engenheiro que traduz decisão técnica em dinheiro muda o nível da conversa.',
-      start: 'Levantar quanto custa por mês o serviço que você mantém e qual componente domina a conta. Ninguém precisa aprovar uma análise.',
-      evidence: 'Análise de custo, oportunidade quantificada, proposta de otimização com trade-off.',
-      goal: 'plataforma'
+      id: 'architecture',
+      name: 'Arquitetura e integração',
+      why: 'É a base já comprovada do perfil e deve evoluir de repertório técnico para julgamento explícito de trade-offs.',
+      start: 'Mapear contratos, dependências, riscos, segurança e alternativas da próxima demanda relevante.',
+      evidence: 'Spec, ADR leve, decisão de integração e revisão pós-produção.',
+      goal: 'padrao'
     },
     {
       id: 'sdd',
       name: 'Spec-Driven Development',
-      why: 'Especificar antes de codar é a forma mais barata de demonstrar pensamento arquitetural dentro de qualquer demanda.',
-      start: 'Escrever, na próxima tarefa atribuída, uma spec de uma página com problema, alternativas e critério de aceite antes de abrir a IDE.',
-      evidence: 'Specs versionadas, critérios de aceite, alternativas descartadas com motivo.',
-      goal: 'metodo'
+      why: 'SDD é o método para tornar raciocínio, critérios e riscos verificáveis antes da implementação.',
+      start: 'Escrever uma spec curta na próxima demanda atribuída antes de abrir a implementação.',
+      evidence: 'Duas specs, critérios de aceite e alternativas descartadas com justificativa.',
+      goal: 'padrao'
+    },
+    {
+      id: 'obs',
+      name: 'Observabilidade e SRE',
+      why: 'Ownership continua após o deploy e exige responder perguntas operacionais com sinais reais.',
+      start: 'Listar as perguntas que hoje não podem ser respondidas durante uma falha do serviço escolhido.',
+      evidence: 'Mapa de sinais, SLIs medidos, lacuna priorizada e recomendação de melhoria.',
+      goal: 'plataforma'
+    },
+    {
+      id: 'cloud',
+      name: 'AWS, segurança e infraestrutura',
+      why: 'Decisões de aplicação precisam considerar topologia, permissões, resiliência, capacidade e pontos de falha.',
+      start: 'Desenhar a topologia sanitizada do serviço e identificar suas dependências e riscos principais.',
+      evidence: 'Topologia, revisão de IaC ou permissões e risco técnico explicitado.',
+      goal: 'plataforma'
+    },
+    {
+      id: 'finops',
+      name: 'FinOps e visão de negócio',
+      why: 'Custo é uma das lentes de decisão, junto de segurança, risco operacional, jornada do cliente e custo da falha.',
+      start: 'Identificar quais dados de custo, uso ou esforço operacional estão disponíveis e qual decisão eles poderiam melhorar.',
+      evidence: 'Estimativa permitida, hipótese de otimização e trade-off documentado.',
+      goal: 'plataforma'
     },
     {
       id: 'agentic',
-      name: 'Ambiente agêntico',
-      why: 'Diferenciação real quando o fluxo é governado e avaliado — não quando é apenas usado.',
-      start: 'Escolher a etapa mais repetitiva do seu fluxo e transformá-la em uma skill ou KB reutilizável.',
-      evidence: 'Artefato versionado, casos de teste, comparação com baseline, limites documentados.',
-      goal: 'metodo'
-    },
-    {
-      id: 'padrao',
-      name: 'Rigor de engenharia',
-      why: 'O mesmo backlog executado com trade-offs registrados e pós-produção acompanhada já é outro nível de atuação.',
-      start: 'Aplicar spec → ADR leve → observação pós-deploy na demanda que você já tem em mãos.',
-      evidence: 'ADR, antes/depois de um indicador, revisão pós-produção.',
-      goal: 'padrao'
+      name: 'Engenharia agêntica',
+      why: 'Agentes geram diferenciação quando melhoram consistência e capacidade sem ocultar falhas, riscos ou limites.',
+      start: 'Selecionar uma etapa repetitiva e definir três casos de teste antes de criar ou ajustar uma skill ou KB.',
+      evidence: 'Artefato versionado, casos de teste, baseline, limites e reutilização quando houver oportunidade.',
+      goal: 'pessoas'
     }
   ],
 
@@ -180,114 +167,83 @@ window.PDI_DATA = {
     {
       id: 'padrao',
       index: '01',
-      tag: 'Rigor',
-      title: 'Elevar o padrão do que já é meu',
+      tag: 'Julgamento',
+      title: 'Julgamento técnico e rigor de execução',
       summary:
-        'Sem esperar iniciativa nova: aplicar rigor de sênior às demandas já atribuídas — especificar antes de codar, registrar trade-offs, observar depois do deploy e revisar o resultado.',
+        'Transformar amplitude técnica em um método consistente de decisão: compreender o problema, explicitar alternativas, implementar com critérios claros e acompanhar o resultado após o deploy.',
       dimensions: ['entrega', 'arquitetura', 'tecnica'],
       scopeHint:
-        'Escolher, entre as demandas que já são suas, uma com risco ou impacto real para ser o caso de referência do ciclo.',
+        'Aplicar o método em duas demandas já atribuídas. Escolher pelo menos uma com risco, integração ou impacto relevante.',
       actions: [
-        'Escolher a demanda de referência entre as já atribuídas e registrar problema, usuários afetados, riscos e critério de pronto.',
-        'Escrever uma spec curta antes da implementação, incluindo as alternativas descartadas e o motivo.',
-        'Registrar os trade-offs de arquitetura, segurança, integração e operação em um ADR leve.',
-        'Acompanhar a entrega depois do deploy: erro, latência, falha de integração ou retrabalho.',
-        'Escrever uma revisão pós-produção com resultado, limitação e próximo passo.',
-        'Repetir o mesmo padrão em uma segunda demanda, para provar que é método e não exceção.'
+        'Selecionar duas demandas do backlog existente e registrar problema, usuário afetado, riscos e critério de pronto.',
+        'Escrever uma spec curta antes da implementação em cada demanda.',
+        'Registrar alternativas e trade-offs de arquitetura, integração, segurança, operação e evolução.',
+        'Acompanhar pelo menos um indicador técnico ou operacional após o deploy.',
+        'Produzir uma revisão curta com resultado, limitação, aprendizado e próximo passo.'
       ],
       proofs: [
-        'Spec escrita antes da implementação',
-        'ADR ou registro de trade-offs',
-        'Antes/depois de ao menos um indicador técnico',
+        'Duas specs escritas antes da implementação',
+        'Ao menos um registro explícito de alternativas e trade-offs',
+        'Indicador acompanhado após o deploy',
         'Revisão pós-produção',
-        'Feedback de um par sobre a clareza da decisão',
-        'O mesmo padrão aplicado duas vezes'
+        'Feedback de um par sobre clareza ou qualidade da decisão'
       ],
       success:
-        'O modo de trabalhar de Marcus mudou de forma verificável dentro do backlog existente, sem depender de escopo novo aprovado.'
+        'O ciclo demonstra que especificação, decisão e acompanhamento deixaram de ser ações ocasionais e se tornaram um método repetível dentro do backlog existente.'
     },
     {
       id: 'plataforma',
       index: '02',
-      tag: 'Confiabilidade',
-      title: 'Profundidade de plataforma: observabilidade, SRE, AWS e FinOps',
+      tag: 'Ownership',
+      title: 'Ownership operacional de um serviço',
       summary:
-        'Construir capacidade operacional real no sistema que você já mantém. Tudo aqui começa sem pedir autorização: observar, medir, entender falha e entender custo.',
+        'Compreender um serviço sob responsabilidade em operação, risco, segurança e custo, usando observabilidade, SRE, AWS e FinOps como lentes integradas — não como trilhas independentes.',
       dimensions: ['confiabilidade', 'produto', 'tecnica'],
       scopeHint:
-        'Escolher um único serviço sob sua responsabilidade como laboratório do ciclo. Um serviço entendido a fundo vale mais que cinco superficialmente.',
+        'Escolher um único serviço como laboratório. Profundidade em um contexto vale mais do que cobertura superficial de vários serviços.',
       actions: [
-        'Mapear o serviço escolhido: topologia AWS, dependências, pontos de falha e sinais que já existem.',
-        'Propor três SLIs e medir o comportamento real antes de sugerir qualquer meta de SLO.',
-        'Instrumentar ou melhorar o que faltar em log, métrica, trace ou dashboard.',
-        'Escrever um runbook para a falha mais provável e validá-lo com quem opera.',
-        'Levantar o custo AWS do serviço e identificar duas oportunidades de FinOps com estimativa e trade-off.',
-        'Fazer a revisão de um incidente ou quase-incidente com foco em causa e prevenção.'
+        'Mapear topologia, dependências, permissões relevantes, pontos de falha e sinais existentes.',
+        'Definir duas ou três perguntas operacionais importantes e medir pelo menos dois SLIs disponíveis.',
+        'Relacionar o comportamento técnico a risco operacional, segurança, jornada do cliente ou esforço do time.',
+        'Construir uma visão inicial de custo, capacidade ou consumo com os dados permitidos pelo contexto.',
+        'Priorizar uma lacuna e produzir uma recomendação de melhoria com benefício, risco e trade-off.'
       ],
       proofs: [
-        'Mapa de topologia, dependências e pontos de falha',
-        'SLIs medidos e SLO candidato',
-        'Dashboard ou instrumentação nova',
-        'Runbook validado por quem opera',
-        'Análise de custo com oportunidades quantificadas',
-        'Revisão de incidente ou quase-incidente'
+        'Mapa sanitizado de topologia, dependências e riscos',
+        'Dois SLIs medidos ou perguntas operacionais respondidas com dados',
+        'Relação explícita entre comportamento técnico e impacto',
+        'Visão inicial de custo, capacidade ou esforço operacional',
+        'Uma recomendação fundamentada de melhoria'
       ],
       success:
-        'Marcus explica com dados como o serviço se comporta, como ele falha e quanto ele custa — e propôs melhoria em pelo menos duas dessas frentes.'
-    },
-    {
-      id: 'metodo',
-      index: '03',
-      tag: 'Método',
-      title: 'Método próprio: SDD + ambiente agêntico',
-      summary:
-        'Transformar o próprio jeito de trabalhar em método reprodutível: especificação primeiro, agentes como executores e avaliação por casos de teste em vez de percepção.',
-      dimensions: ['aprendizado', 'escala', 'tecnica'],
-      actions: [
-        'Descrever o fluxo atual e onde ele custa mais tempo, retrabalho ou inconsistência.',
-        'Adotar spec-driven development em pelo menos três demandas: especificação e critério de aceite antes do código.',
-        'Criar uma skill, KB ou agente reutilizável para a etapa mais repetitiva desse fluxo.',
-        'Definir três casos de teste representativos e critérios de qualidade para o artefato.',
-        'Comparar o resultado assistido com o baseline em qualidade, retrabalho, tempo ou consistência.',
-        'Registrar falhas, limites e riscos antes de sugerir adoção por outras pessoas.'
-      ],
-      proofs: [
-        'Descrição do fluxo antes e depois',
-        'Três specs com critério de aceite',
-        'Artefato agêntico versionado',
-        'Casos de teste e resultados',
-        'Comparação com baseline',
-        'Registro de limites e riscos'
-      ],
-      success:
-        'Existe um método pessoal documentado e avaliado — não apenas a sensação de que a IA ajuda.'
+        'Marcus consegue explicar com dados como o serviço se comporta, quais riscos importam e qual melhoria deve ser priorizada. Dashboard novo, SLO, runbook e otimização de custo são stretch goals, não requisitos cumulativos.'
     },
     {
       id: 'pessoas',
-      index: '04',
-      tag: 'Pessoas',
-      title: 'Comunicação, influência e mentoria',
+      index: '03',
+      tag: 'Influência',
+      title: 'Influência técnica e multiplicação',
       summary:
-        'A competência que mais pesa na transição para Sênior e a que menos depende de autorização: clareza escrita, posições defendidas com dados e capacidade de elevar quem está ao lado.',
+        'Demonstrar que decisões, documentação e métodos de Marcus aumentam clareza, autonomia ou segurança de outras pessoas, sem depender de uma iniciativa transversal formal.',
       dimensions: ['comunicacao', 'colaboracao', 'escala'],
+      scopeHint:
+        'Usar decisões e aprendizados do trabalho atual. SDD, documentação e engenharia agêntica podem ser mecanismos de multiplicação.',
       actions: [
-        'Transformar três decisões técnicas em documentos curtos que outra pessoa consiga seguir sem você.',
-        'Conduzir uma sessão por mês — design review, troubleshooting ou compartilhamento — mesmo que informal.',
-        'Apoiar de forma recorrente um colega em uma competência ligada ao trabalho atual.',
-        'Pedir feedback objetivo sobre clareza, utilidade e mudança gerada, e registrar o que veio.',
-        'Defender ao menos uma posição técnica divergente com dados e registrar o desfecho, inclusive se perder.',
-        'Registrar exemplos em que outra pessoa executou melhor, mais rápido ou com menos risco por causa da sua atuação.'
+        'Produzir dois documentos técnicos que outra pessoa consiga utilizar sem explicação síncrona obrigatória.',
+        'Conduzir uma sessão de design, troubleshooting ou compartilhamento durante o ciclo.',
+        'Apoiar um colega em uma decisão ou competência ligada ao trabalho atual.',
+        'Solicitar feedback objetivo sobre clareza, utilidade e mudança gerada.',
+        'Quando houver oportunidade, avaliar uma skill, KB ou agente com três casos de teste e registrar limites antes de promover reutilização.'
       ],
       proofs: [
-        'Três documentos de decisão',
-        'Agendas ou registros das sessões',
-        'Relato de mentoria recorrente',
-        'Feedback recebido por escrito',
-        'Um caso de divergência conduzida com dados',
-        'Exemplo de capacidade ampliada em outra pessoa'
+        'Dois documentos técnicos reutilizáveis',
+        'Registro de uma sessão técnica',
+        'Feedback objetivo recebido',
+        'Exemplo de decisão ou execução melhorada por outra pessoa',
+        'Como evidência estendida: artefato agêntico testado e reutilizado'
       ],
       success:
-        'Há evidência de que a comunicação e a atuação de Marcus mudaram decisões e ampliaram a capacidade de outras pessoas.'
+        'Há evidência concreta de que a atuação de Marcus melhorou uma decisão, execução ou capacidade além da própria entrega.'
     }
   ],
 
@@ -298,13 +254,12 @@ window.PDI_DATA = {
       to: 15,
       title: 'Escolhas e baseline',
       items: [
-        'Apresentar este PDI recalibrado à liderança',
+        'Apresentar o PDI recalibrado à liderança',
         'Obter critérios internos de Pleno para Sênior',
-        'Escolher a demanda de referência entre as já atribuídas',
-        'Escolher o serviço-laboratório de observabilidade e custo',
-        'Descrever o fluxo de trabalho atual e seus gargalos',
+        'Escolher duas demandas para o objetivo de rigor',
+        'Escolher um serviço para o objetivo de ownership operacional',
         'Organizar de três a cinco casos anteriores como evidências',
-        'Combinar checkpoints e sponsors'
+        'Combinar checkpoints, feedbacks e possíveis sponsors'
       ]
     },
     {
@@ -313,11 +268,11 @@ window.PDI_DATA = {
       to: 45,
       title: 'Aplicação no trabalho real',
       items: [
-        'Aplicar spec, ADR e pós-produção na demanda de referência',
-        'Mapear topologia, falhas e lacunas de observabilidade',
-        'Adotar SDD em pelo menos duas demandas',
-        'Instrumentar o que faltava em log, métrica ou dashboard',
-        'Conduzir a primeira sessão técnica do ciclo',
+        'Aplicar spec e trade-offs na primeira demanda',
+        'Mapear topologia, dependências, riscos e sinais do serviço escolhido',
+        'Definir perguntas operacionais e medir os primeiros SLIs',
+        'Produzir o primeiro documento técnico reutilizável',
+        'Conduzir a sessão técnica do ciclo',
         'Coletar feedback intermediário'
       ]
     },
@@ -325,14 +280,14 @@ window.PDI_DATA = {
       id: 'fase-3',
       from: 46,
       to: 75,
-      title: 'Profundidade e evidência',
+      title: 'Repetição e profundidade',
       items: [
-        'Repetir o padrão em uma segunda demanda',
-        'Medir SLIs, propor SLO e validar runbook',
-        'Concluir a análise de custo e as oportunidades de FinOps',
-        'Avaliar a skill ou agente com casos de teste e baseline',
-        'Sustentar a mentoria recorrente e pedir feedback objetivo',
-        'Consolidar evidências de decisão e de influência'
+        'Repetir o método na segunda demanda',
+        'Acompanhar indicador e concluir as revisões pós-produção',
+        'Relacionar sinais técnicos a risco, segurança, produto ou custo',
+        'Produzir e defender uma recomendação operacional',
+        'Concluir o segundo documento reutilizável',
+        'Avaliar skill ou agente como stretch goal, quando houver oportunidade'
       ]
     },
     {
@@ -341,16 +296,15 @@ window.PDI_DATA = {
       to: 90,
       title: 'Banca e decisão',
       items: [
-        'Fechar as revisões pós-produção',
-        'Consolidar comparações com baseline',
-        'Atualizar a matriz de competências com evidência',
+        'Consolidar no máximo cinco evidências fortes',
+        'Atualizar a matriz de competências com lastro',
+        'Separar requisitos concluídos de stretch goals',
         'Realizar a banca de PDI',
-        'Definir o ciclo seguinte com base nas evidências'
+        'Definir o ciclo seguinte com base em evidências e feedback'
       ]
     }
   ],
 
-  /** Escala 0–5 da Matriz de Competências. */
   scale: [
     { level: 0, label: 'Sem evidência suficiente' },
     { level: 1, label: 'Executa com orientação frequente' },
@@ -360,34 +314,31 @@ window.PDI_DATA = {
     { level: 5, label: 'Impacto organizacional sustentável' }
   ],
 
-  /** `target` = leitura do critério de transição Pleno → Sênior. */
   dimensions: [
     { id: 'tecnica', short: 'Técnica', name: '1. Profundidade técnica', target: 3, desc: 'Fundamentos, diagnóstico, qualidade, performance, segurança e escolhas técnicas.' },
-    { id: 'arquitetura', short: 'Arquitetura', name: '2. Arquitetura e system design', target: 3, desc: 'Decompor problemas, modelar contratos, dados, falhas, escala, custo e evolução.' },
+    { id: 'arquitetura', short: 'Arquitetura', name: '2. Arquitetura e system design', target: 3, desc: 'Decompor problemas, modelar contratos, integrações, dados, falhas, escala, custo e evolução.' },
     { id: 'entrega', short: 'Ownership', name: '3. Entrega e ownership', target: 3, desc: 'Do problema à produção, risco, pós-release e responsabilidade por resultados.' },
-    { id: 'confiabilidade', short: 'Operação', name: '4. Confiabilidade e operação', target: 3, desc: 'Observabilidade, SLOs, incidentes, capacidade, resiliência e melhoria pós-falha.' },
-    { id: 'produto', short: 'Produto', name: '5. Produto e negócio', target: 3, desc: 'Problema do cliente, métricas, valor, custo de oportunidade e priorização — inclui custo de operação.' },
-    { id: 'comunicacao', short: 'Influência', name: '6. Comunicação e influência', target: 4, desc: 'Clareza escrita e oral, decisões registradas, alinhamento e negociação de trade-offs.' },
-    { id: 'colaboracao', short: 'Mentoria', name: '7. Colaboração e mentoria', target: 4, desc: 'Elevar o nível de colegas, feedback, onboarding, revisão e segurança para decidir.' },
-    { id: 'escala', short: 'Escala org.', name: '8. Escala organizacional', target: 3, desc: 'Reuso, plataformas, golden paths, padrões e adoção entre times.' },
+    { id: 'confiabilidade', short: 'Operação', name: '4. Confiabilidade e operação', target: 3, desc: 'Observabilidade, SLIs, incidentes, capacidade, resiliência, segurança e melhoria pós-falha.' },
+    { id: 'produto', short: 'Produto', name: '5. Produto, risco e negócio', target: 3, desc: 'Cliente, segurança, risco operacional, métricas, valor, custo da falha, custo de oportunidade e operação.' },
+    { id: 'comunicacao', short: 'Influência', name: '6. Comunicação e influência', target: 3, desc: 'Clareza escrita e oral, decisões registradas, escuta, alinhamento e negociação de trade-offs.' },
+    { id: 'colaboracao', short: 'Mentoria', name: '7. Colaboração e mentoria', target: 3, desc: 'Elevar colegas por feedback, onboarding, revisão, apoio recorrente e segurança para decidir.' },
+    { id: 'escala', short: 'Escala org.', name: '8. Escala organizacional', target: 3, desc: 'Reuso, golden paths, padrões e adoção entre contextos. Nível 4 é stretch neste ciclo.' },
     { id: 'aprendizado', short: 'Aprendizado', name: '9. Aprendizado aplicado', target: 3, desc: 'Transformar estudo em experimento, entrega, decisão ou melhoria mensurável.' }
   ],
 
   matrixRule:
     'Cada nota exige ao menos uma evidência com contexto, ação, resultado e alcance. Ausência de evidência recebe 0 — nunca uma estimativa otimista.',
   matrixTransition:
-    'Pleno → Sênior tende a exigir consistência próxima de 3 nas dimensões centrais e sinais de 4 em influência ou multiplicação.',
+    'Pleno → Sênior tende a exigir consistência próxima de 3 nas dimensões centrais. Nível 4 em influência, mentoria ou escala é sinal estendido e não requisito obrigatório deste ciclo.',
 
-  /** Indicadores do ciclo — todos derivados do que você registra aqui. */
   indicators: [
-    { id: 'ind-1', label: 'Padrão de rigor aplicado duas vezes', hint: 'Objetivo 01 concluído', kind: 'goal', goal: 'padrao' },
-    { id: 'ind-2', label: 'Serviço entendido em falha e em custo', hint: 'Objetivo 02 concluído', kind: 'goal', goal: 'plataforma' },
-    { id: 'ind-3', label: 'Método pessoal documentado e avaliado', hint: 'Objetivo 03 concluído', kind: 'goal', goal: 'metodo' },
-    { id: 'ind-4', label: 'Comunicação e mentoria demonstradas', hint: 'Objetivo 04 concluído', kind: 'goal', goal: 'pessoas' },
-    { id: 'ind-5', label: 'Três evidências de influência ou mentoria', hint: '3 evidências ligadas ao Objetivo 04', kind: 'evidenceByGoal', goal: 'pessoas', target: 3 },
-    { id: 'ind-6', label: 'Cinco casos profissionais estruturados', hint: '5 evidências registradas', kind: 'evidenceCount', target: 5 },
-    { id: 'ind-7', label: 'Dois checkpoints formais de feedback', hint: '2 checkpoints no diário', kind: 'checkpointCount', target: 2 },
-    { id: 'ind-8', label: 'Banca final com decisão do próximo ciclo', hint: '1 checkpoint do tipo Banca', kind: 'bancaCount', target: 1 }
+    { id: 'ind-1', label: 'Método de rigor aplicado em duas demandas', hint: 'Objetivo 01 concluído', kind: 'goal', goal: 'padrao' },
+    { id: 'ind-2', label: 'Serviço compreendido em operação e impacto', hint: 'Objetivo 02 concluído', kind: 'goal', goal: 'plataforma' },
+    { id: 'ind-3', label: 'Influência técnica demonstrada', hint: 'Objetivo 03 concluído', kind: 'goal', goal: 'pessoas' },
+    { id: 'ind-4', label: 'Duas evidências de influência ou multiplicação', hint: '2 evidências ligadas ao Objetivo 03', kind: 'evidenceByGoal', goal: 'pessoas', target: 2 },
+    { id: 'ind-5', label: 'Cinco casos profissionais estruturados', hint: '5 evidências registradas', kind: 'evidenceCount', target: 5 },
+    { id: 'ind-6', label: 'Dois checkpoints formais de feedback', hint: '2 checkpoints no diário', kind: 'checkpointCount', target: 2 },
+    { id: 'ind-7', label: 'Banca final com decisão do próximo ciclo', hint: '1 checkpoint do tipo Banca', kind: 'bancaCount', target: 1 }
   ],
 
   horizons: [
@@ -395,10 +346,10 @@ window.PDI_DATA = {
       id: 'h6',
       title: 'Metas de 6 meses',
       items: [
-        'Aplicar spec → trade-offs → pós-produção como rotina, não como exceção.',
+        'Aplicar problema → alternativas → decisão → pós-produção como rotina.',
         'Manter um portfólio de cinco a oito casos profissionais estruturados.',
-        'Ter um serviço com observabilidade, SLO proposto e custo compreendido ponta a ponta.',
-        'Ter um método pessoal de SDD e agentes usado por pelo menos mais uma pessoa.',
+        'Ter um serviço compreendido em observabilidade, risco, segurança e custo operacional.',
+        'Ter SDD e ao menos um artefato agêntico avaliados como métodos pessoais de engenharia.',
         'Receber feedback explícito sobre prontidão, lacunas e oportunidades para o próximo nível.'
       ]
     },
@@ -407,8 +358,8 @@ window.PDI_DATA = {
       title: 'Metas de 12 meses',
       items: [
         'Demonstrar consistência compatível com Sênior, mesmo que a decisão formal dependa da organização.',
-        'Sustentar decisões técnicas com confiabilidade, segurança, custo e impacto de produto.',
-        'Ser reconhecido em ao menos um eixo: arquitetura front-end e integração, confiabilidade e operação, ou engenharia agêntica aplicada.',
+        'Sustentar decisões técnicas com confiabilidade, segurança, risco, custo e impacto de produto.',
+        'Ser reconhecido por arquitetura e integração de sistemas críticos, com engenharia agêntica como diferenciação.',
         'Possuir sponsor e narrativa de progressão baseada em evidências.',
         'Decidir, com experiência real, entre Staff/Platform/Architecture, Tech Lead ou especialização mais profunda.'
       ]
@@ -419,8 +370,8 @@ window.PDI_DATA = {
     { id: 'q1', text: 'Quais comportamentos e resultados diferenciam Pleno e Sênior no meu contexto?' },
     { id: 'q2', text: 'Quais aspectos da minha atuação atual já estão no próximo nível?' },
     { id: 'q3', text: 'Quais duas lacunas mais limitam minha progressão hoje?' },
-    { id: 'q4', text: 'Dentro do backlog que já é meu, onde há espaço para eu assumir mais decisão?' },
-    { id: 'q5', text: 'Que tipo de melhoria eu poderia propor sem conflitar com as prioridades do time?' },
+    { id: 'q4', text: 'Dentro do backlog atual, onde posso assumir mais decisão e acompanhamento pós-produção?' },
+    { id: 'q5', text: 'Quais evidências de impacto, risco ou influência têm mais valor na avaliação interna?' },
     { id: 'q6', text: 'Quem pode validar minhas evidências e atuar como sponsor?' }
   ],
 
@@ -429,20 +380,20 @@ window.PDI_DATA = {
     'Qual evidência ficou mais forte?',
     'Que hipótese foi refutada?',
     'O plano continua ligado ao trabalho real?',
-    'Algum objetivo virou apenas estudo?',
-    'Há excesso de escopo?',
+    'Algum método virou apenas produção de artefato?',
+    'Há excesso de escopo ou stretch goal tratado como obrigatório?',
     'O que a liderança precisa habilitar?'
   ],
 
   banca: {
-    prep: 'Sete dias antes: atualizar perfil, matriz, objetivos, evidências e feedbacks. Selecionar no máximo cinco casos e registrar perguntas e decisões necessárias.',
+    prep: 'Sete dias antes: atualizar perfil, matriz, objetivos, evidências e feedbacks. Selecionar no máximo cinco casos, separar requisitos de stretch goals e registrar as decisões necessárias.',
     people: 'Marcus; liderança direta ou sponsor; par técnico experiente; opcionalmente produto ou stakeholder.',
     agenda: [
       { min: 5, text: 'Contexto e objetivo da revisão' },
       { min: 15, text: 'Resultados e evidências' },
       { min: 10, text: 'Diagnóstico por competências' },
       { min: 10, text: 'Pareceres e contraditório' },
-      { min: 10, text: 'Trilhas e oportunidades' },
+      { min: 10, text: 'Trilhas, restrições e oportunidades' },
       { min: 10, text: 'Decisões, apoios e próximos 90 dias' }
     ],
     decisions: [
