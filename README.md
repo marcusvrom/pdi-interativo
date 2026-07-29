@@ -8,20 +8,21 @@ o ciclo de 90 dias sem que nenhum dado saia do navegador.
 
 **Conteúdo (espelha o Notion)**
 
-> **Recalibrado em 29/07/2026.** Fato novo: autonomia limitada para criar backlog.
-> Os objetivos foram redesenhados para o desenvolvimento individual de capacidades
-> dentro das demandas já atribuídas — nenhum depende de escopo novo aprovado.
+> **Recalibrado em 28/07/2026.** O ciclo assume autonomia limitada para criar backlog
+> e concentra o desenvolvimento em capacidades aplicáveis às demandas já atribuídas.
+> SDD, observabilidade, SRE, AWS, FinOps e engenharia agêntica são métodos e lentes,
+> não objetivos profissionais concorrentes.
 
-- objetivo de carreira, trilha primária, eixo de diferenciação e horizonte;
-- a restrição de autonomia assumida explicitamente;
-- os 4 objetivos do ciclo com **ações**, **evidências de conclusão** e **critério de sucesso**;
-- **trilhas de capacidade** — soft skills, observabilidade, SRE, cloud/AWS, FinOps,
-  SDD, ambiente agêntico e rigor de engenharia — cada uma com um primeiro passo
-  que não depende de autorização;
+- objetivo de carreira, trilha primária, base profissional comprovada, diferenciação e horizonte;
+- restrição de autonomia assumida explicitamente;
+- 3 objetivos do ciclo com **ações**, **evidências de conclusão** e **critério de sucesso**;
+- **trilhas de capacidade** conectadas aos objetivos: comunicação, arquitetura e integração,
+  SDD, observabilidade/SRE, AWS/segurança, FinOps/negócio e engenharia agêntica;
+- separação entre requisitos do ciclo e **stretch goals** dependentes de oportunidade ou alinhamento;
 - prioridades explicitamente **fora de escopo** neste ciclo;
 - plano por fase (dias 1–15, 16–45, 46–75, 76–90) com datas reais e fase atual destacada;
-- matriz de competências: 9 dimensões, escala 0–5 e alvos de transição Pleno → Sênior;
-- 6 indicadores obrigatórios do ciclo;
+- matriz de competências: 9 dimensões, escala 0–5 e alvos indicativos de transição Pleno → Sênior;
+- 7 indicadores derivados do ciclo;
 - metas de 6 e 12 meses;
 - perguntas obrigatórias para a liderança;
 - playbook da banca trimestral (agenda de 60 min e decisões obrigatórias).
@@ -69,3 +70,6 @@ Ao mudar o plano lá, atualize `pdi-data.js` e o campo `governance.updatedAt`.
 Progresso, matriz, evidências, checkpoints e respostas ficam apenas no `localStorage`
 do navegador. Nada é enviado para servidor algum nem versionado no repositório —
 exporte o JSON antes de trocar de máquina.
+
+O conteúdo estático e público deve permanecer sanitizado: não versione nomes internos,
+topologias reais, incidentes, vulnerabilidades, métricas, custos ou controles corporativos.
